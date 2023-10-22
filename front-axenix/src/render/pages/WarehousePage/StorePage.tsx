@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { Header } from "../../containers/Header/Header";
-import { ModalPopup } from "../../ui/ModalPopup/ModalPopup";
-import { Canvas } from "../../containers/Canvas/Canvas";
+import { Header } from "../../containers/Header/Header.js";
+import { ModalPopup } from "../../ui/ModalPopup/ModalPopup.js";
+import { Canvas } from "../../containers/Canvas/Canvas.js";
 
 import "./style.scss";
 import {
@@ -9,7 +9,7 @@ import {
   getWarehouses,
   getForkliftData,
 } from "../../../services/fetch.js";
-const StorePage = () => {
+const WarehousePage = () => {
   const [isOpen, setOpen] = useState(false);
   const [currentForkLift, setCurrentForkLift] = useState({
     currentPoint: "K1",
@@ -100,4 +100,4 @@ const StorePage = () => {
   );
 };
 
-export { StorePage };
+export { WarehousePage };
