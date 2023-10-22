@@ -1,0 +1,45 @@
+.menu {
+  padding: 40px 20px;
+  &__row {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 16px;
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    height: 320px;
+    color: white;
+    margin-left: 0px;
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-repeat: no-repeat;
+    span {
+      text-shadow: 1px 1px 10px black;
+    }
+    font-size: 48px;
+    border: 3px solid #ffb800;
+    border-radius: 20px;
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.02);
+      color: rgba(#fff, 0.8);
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+    &_warhouse {
+      background-image: url("../../../../public/warhouse.jpg");
+    }
+    &_records {
+      background-image: url("../../../../public/records.jpg");
+    }
+    &_history {
+      background-image: url("../../../../public/history.jpg");
+    }
+    &_forklifters {
+      background-image: url("../../../../public/forklifters.jpg");
+    }
+  }
+}

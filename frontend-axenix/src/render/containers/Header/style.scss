@@ -1,0 +1,54 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+  z-index: 1001;
+  background-color: #ffb800;
+}
+
+.header__nav {
+  width: 100%;
+}
+
+.header__menu-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0px 40px;
+}
+
+.header__item {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  font-size: 28px;
+
+  &_logo {
+    padding-left: 60px;
+    color: white;
+    background-image: url("/logo.png");
+    background-position: 0% 50%;
+    background-repeat: no-repeat;
+    transition: all 0.2s ease-in;
+    &:hover {
+        opacity: 0.8;
+    }
+  }
+  &_login {
+    color: white;
+    width: 48px;
+    height: 48px;
+    background-image: url("../../../../src/assets/icons/login.png");
+    background-position: 0% 50%;
+    background-repeat: no-repeat;
+    &:hover {
+        opacity: 0.8;
+    }
+  }
+  cursor: pointer;
+}
