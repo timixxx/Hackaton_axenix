@@ -1,0 +1,22 @@
+.fork-card {
+    // width: 100%;
+    position: relative;
+    width: 540px;
+    min-height: 200px;
+    padding: 0px 40px;
+    color: #ffb800;
+    border: 3px solid #ffb800;
+    border-radius: 20px;
+    &__title {
+        font-size: 24px;
+        font-weight: 600;
+    }
+    &__empty {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 100%;
+        font-size: 18px;
+        transform: translateX(-50%);
+    }
+}

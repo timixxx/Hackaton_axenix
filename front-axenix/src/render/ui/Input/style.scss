@@ -1,0 +1,20 @@
+.label {
+    color: black;
+}
+
+.input {
+    width: 100%;
+    color: black;
+    height: 40px;
+    font-size: 20px;
+    border: 2px solid #ffb800;
+    background-color: white;
+    border-radius: 20px;
+    /* outline: no; */
+    &:focus {
+        outline: none;
+    }
+    &::placeholder {
+        padding-left: 20px;
+    }
+}

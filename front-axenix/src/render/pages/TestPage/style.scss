@@ -1,0 +1,52 @@
+.forklifts {
+  &__list {
+    margin-left: 24px;
+  }
+}
+
+.forklift {
+  &__item {
+    display: flex;
+    align-items: center;
+    width: 180px;
+    height: 60px;
+    margin-bottom: 12px;
+    padding-left: 40px;
+    border: 3px solid #ffb800;
+    border-radius: 8px;
+    color: white;
+    background-color: #ffb800;
+    text-align: left;
+    background-image: url("../../../assets/icons/forklift-32-white.png");
+    background-repeat: no-repeat;
+    background-position: (2%, 50%);
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+    &.active {
+      padding-left: 60px;
+      color: #ffb800;
+      background-color: transparent;
+      background-image: url("../../../assets/icons/forklift-48-orange.png");
+    }
+    &:hover {
+      padding-left: 60px;
+      color: #ffb800;
+      background-color: transparent;
+      background-image: url("../../../assets/icons/forklift-48-orange.png");
+    }
+    &:active {
+      color: white;
+      background-color: #ffb800;
+      padding-left: 40px;
+      background-image: url("../../../assets/icons/forklift-32-white.png");
+    }
+  }
+  &__name {
+    font-size: 24px;
+  }
+}
+
+.warhouse {
+  display: flex;
+  padding: 40px 20px;
+}

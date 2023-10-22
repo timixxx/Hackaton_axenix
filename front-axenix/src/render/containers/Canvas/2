@@ -1,0 +1,119 @@
+let canvas, ctx, w, h;
+let bars = [];
+let bar = {
+	width: 20,
+	distance: 15,
+	speed: 3,
+	length: 200
+}
+let mouse = {
+	x: undefined,
+	y: undefined
+}
+
+function init() {
+	canvas = document.querySelector("#canvas");
+	ctx = canvas.getContext("2d");
+	resizeReset();
+	animationLoop();
+}
+
+function resizeReset() {
+	w = canvas.width = window.innerWidth;
+	h = canvas.height = window.innerHeight;
+
+	bars = [];
+	for (let i = bar.distance * 3 + bar.width / 2; i < w - bar.distance * 3; i += bar.width + bar.distance) {
+		bars.push(new Bar(i, (h + bar.length) * 0.5));
+	}
+}
+
+function mousemove(e) {
+	mouse.x = e.x;
+	mouse.y = e.y;
+}
+
+function mouseout() {
+	mouse.x = undefined;
+	mouse.y = undefined;
+}
+
+function animationLoop() {
+	ctx.clearRect(0, 0, w, h);
+	drawScene();
+	requestAnimationFrame(animationLoop);
+}
+
+function drawScene() {
+	bars.map((b) => {
+		b.update();
+		b.draw();
+	})
+}
+
+class Bar {
+	constructor(x, y) {
+		this.x = x;
+		this.y = y;
+		this.lineY = y;
+		this.targetY = y;
+	}
+	draw() {
+		// draw top arc
+		ctx.beginPath();
+		ctx.arc(this.x, this.y - bar.length * 1.15, bar.width * 0.2, 0, Math.PI * 2);
+		ctx.fillStyle = `hsla(50, 100%, 70%, 1)`;
+		ctx.fill();
+		ctx.closePath();
+
+		// draw bottom arc
+		let tmp = (this.y - this.lineY) / bar.length * 100 / 1.5;
+		ctx.beginPath(); 
+		ctx.arc(this.x, this.y, bar.width * 0.8, 0, Math.PI * 2);
+		ctx.fillStyle = `hsla(220, 100%, ${tmp}%, 1)`;
+		ctx.fill();
+		ctx.closePath();
+
+		// draw bar 
+		ctx.beginPath();
+		ctx.moveTo(this.x, this.y);
+		ctx.lineTo(this.x, this.lineY);
+		ctx.lineWidth = bar.width;
+		ctx.lineCap = "round";
+		ctx.strokeStyle = `hsla(220, 100%, 100%, 1)`;
+		ctx.stroke();
+		ctx.closePath();
+	}
+	update() {
+		if (mouse.x !== undefined) {
+			let distanceX = Math.pow(Math.abs(this.x - mouse.x), 2) * 0.005;
+			this.targetY = (this.y - bar.length) + distanceX;
+			if (this.targetY > this.y) {
+				this.targetY = this.y;
+			}
+		} else {
+			this.targetY = this.y;
+		}
+
+		let distanceY = Math.abs(this.lineY - this.targetY);
+
+		if (this.lineY < this.targetY) {
+			if (distanceY < bar.speed) {
+				this.lineY += distanceY;
+			} else {
+				this.lineY += bar.speed;
+			}
+		} else if (this.lineY > this.targetY) {
+			if (distanceY < bar.speed) {
+				this.lineY -= distanceY;
+			} else {
+				this.lineY -= bar.speed;
+			}
+		}
+	}
+}
+
+window.addEventListener("DOMContentLoaded", init);
+window.addEventListener("resize", resizeReset);
+window.addEventListener("mousemove", mousemove);
+window.addEventListener("mouseout", mouseout);
